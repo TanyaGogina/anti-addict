@@ -1,12 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AchievementComponent} from './achievement.component';
+import {RouterModule, Routes} from '@angular/router';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: AchievementComponent
+  }
+];
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AchievementComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
-export class AchievementModule { }
+export class AchievementModule {
+}
