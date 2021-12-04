@@ -1,3 +1,12 @@
-<p>
-  achievement works!
-</p>
+<div class="d-flex h-100 wrapper">
+    <ion-card *ngFor="let achievement of achievements">
+        <ion-card-header>
+            <ion-card-subtitle>{{achievement.date | date}}</ion-card-subtitle>
+            <ion-card-title>{{achievement.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <img src="../../../assets/trophy.png">
+        </ion-card-content>
+    </ion-card>
+</div>

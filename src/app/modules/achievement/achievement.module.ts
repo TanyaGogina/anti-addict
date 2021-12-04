@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AchievementComponent} from './achievement.component';
 import {RouterModule, Routes} from '@angular/router';
+import {IonicModule} from "@ionic/angular";
 
 const routes: Routes = [
     {
@@ -15,7 +16,8 @@ const routes: Routes = [
     declarations: [AchievementComponent],
     imports: [
         CommonModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        IonicModule
     ]
 })
 export class AchievementModule {
