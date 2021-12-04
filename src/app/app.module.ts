@@ -19,9 +19,10 @@ import {environment} from '../environments/environment';
 import {LandingComponent} from "./components/landing/landing.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AddictConfigurationComponent} from "./components/addict-configuration/addict-configuration.component";
+import {EditAddictionComponent} from "./components/edit-addiction/edit-addiction.component";
 
 @NgModule({
-    declarations: [AppComponent, LandingComponent, AddictConfigurationComponent],
+    declarations: [AppComponent, LandingComponent, AddictConfigurationComponent, EditAddictionComponent],
     entryComponents: [],
     imports: [
         BrowserModule,

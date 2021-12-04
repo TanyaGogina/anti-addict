@@ -1,0 +1,140 @@
+<div class=" wrapper">
+    <ion-card [formGroup]="appConfigFormGroup">
+        <ion-card-header>
+            <ion-card-title>Configure your app functionality</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-note>Achievements</ion-note>
+
+            <ion-item formGroupName="achievements">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <div class="divider"></div>
+            <ion-note>Failures</ion-note>
+
+            <ion-item formGroupName="failure">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <div class="divider"></div>
+            <ion-note>Motivational content</ion-note>
+
+            <ion-item formGroupName="content">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <ng-container *ngIf="appConfigFormGroup.get('content').get('isEnabled').value">
+                <ion-item formGroupName="content">
+                    <ion-label>Content restriction</ion-label>
+                    <ion-toggle formControlName="contentRestriction"></ion-toggle>
+                </ion-item>
+
+                <ion-item formGroupName="content">
+                    <ion-label>Is text content enabled</ion-label>
+                    <ion-toggle formControlName="textContentEnabled"></ion-toggle>
+                </ion-item>
+
+                <ion-item formGroupName="content">
+                    <ion-label>Is video content enabled</ion-label>
+                    <ion-toggle formControlName="videoContentEnabled"></ion-toggle>
+                </ion-item>
+            </ng-container>
+
+            <div class="divider"></div>
+            <ion-note>Finance</ion-note>
+
+            <ion-item formGroupName="finance">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <ng-container *ngIf="appConfigFormGroup.get('finance').get('isEnabled').value">
+                <ion-item formGroupName="finance">
+                    <ion-label position="floating">Your currency (UAH, USD, EUR)</ion-label>
+                    <ion-select okText="Submit" cancelText="Cancel" formControlName="currency">
+                        <ion-select-option value="UAH">UAH</ion-select-option>
+                        <ion-select-option value="USD">USD</ion-select-option>
+                        <ion-select-option value="EUR">EUR</ion-select-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item formGroupName="finance">
+                    <ion-label>Is prognostications enabled</ion-label>
+                    <ion-toggle formControlName="isPrognosticationsEnabled"></ion-toggle>
+                </ion-item>
+            </ng-container>
+
+            <div class="divider"></div>
+            <ion-note>Poll</ion-note>
+
+            <ion-item formGroupName="poll">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <ng-container *ngIf="appConfigFormGroup.get('poll').get('isEnabled').value">
+                <ion-item formGroupName="poll">
+                    <ion-label position="floating">Subject</ion-label>
+                    <ion-select okText="Submit" cancelText="Cancel" [multiple]="true" formControlName="subject">
+                        <ion-select-option value="fighting">Addiction fighting</ion-select-option>
+                        <ion-select-option value="progress">Progress checking</ion-select-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item formGroupName="poll">
+                    <ion-label>Are poll notifications enabled</ion-label>
+                    <ion-toggle formControlName="pollNotificationEnabled"></ion-toggle>
+                </ion-item>
+            </ng-container>
+
+            <div class="divider"></div>
+            <ion-note>Reminder</ion-note>
+
+            <ion-item formGroupName="reminder">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <ng-container *ngIf="appConfigFormGroup.get('reminder').get('isEnabled').value">
+                <ion-item formGroupName="reminder">
+                    <ion-label position="floating">Frequency (times per week)</ion-label>
+                    <ion-input formControlName="frequency"></ion-input>
+                </ion-item>
+
+                <ion-item formGroupName="reminder">
+                    <ion-label>Suitable time</ion-label>
+                    <ion-datetime displayFormat="HH:mm" formControlName="time"></ion-datetime>
+                </ion-item>
+            </ng-container>
+
+            <div class="divider"></div>
+            <ion-note>Statistics</ion-note>
+
+            <ion-item formGroupName="statistics">
+                <ion-label>Is module enabled</ion-label>
+                <ion-toggle formControlName="isEnabled"></ion-toggle>
+            </ion-item>
+
+            <ng-container *ngIf="appConfigFormGroup.get('statistics').get('isEnabled').value">
+                <ion-item formGroupName="statistics">
+                    <ion-label position="floating">Mode</ion-label>
+                    <ion-select okText="Submit" cancelText="Cancel" formControlName="mode">
+                        <ion-select-option [value]="0">Numeric and chart data</ion-select-option>
+                        <ion-select-option [value]="1">Only numeric data</ion-select-option>
+                        <ion-select-option [value]="2">Only chart data</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ng-container>
+
+        </ion-card-content>
+    </ion-card>
+</div>
+
+<div class="d-flex">
+    <ion-button color="success big" (click)="save()">Save</ion-button>
+</div>

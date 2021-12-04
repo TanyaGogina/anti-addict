@@ -31,6 +31,15 @@
                                 </ion-item>
                             </ion-menu-toggle>
                         </ng-container>
+
+
+                        <ion-menu-toggle auto-hide="false">
+                            <ion-item routerDirection="root" [routerLink]="['edit']" lines="none" detail="false"
+                                      routerLinkActive="selected">
+                                <ion-icon slot="start" name="create"></ion-icon>
+                                <ion-label>Edit addiction</ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
                     </ng-container>
 
                     <ion-note *ngIf="!addictionsService.addictions.length" class="add-note">

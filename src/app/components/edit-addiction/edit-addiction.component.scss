@@ -1,0 +1,36 @@
+ion-button {
+  width: 45vw;
+  margin: 0 5vw 5vw;
+
+
+  &.big {
+    width: 90vw;
+  }
+}
+
+ion-card {
+  width: 90vw;
+  margin-top: 5vw;
+}
+
+ion-card-title {
+  font-size: 15px;
+}
+
+.divider {
+  margin: 25px 0 15px;
+  height: 1px;
+  background: #304a73;
+}
+
+
+.wrapper {
+  flex: 1;
+  max-height: calc(100% - 15vw - 40px);
+  overflow: auto;
+  margin: 5vw 5vw 3vw;
+}
+
+ion-card {
+  margin: 0;
+}

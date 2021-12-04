@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {LandingComponent} from "./components/landing/landing.component";
 import {AddictConfigurationComponent} from "./components/addict-configuration/addict-configuration.component";
+import {EditAddictionComponent} from "./components/edit-addiction/edit-addiction.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'config',
     component: AddictConfigurationComponent
+  },
+  {
+    path: 'edit',
+    component: EditAddictionComponent
   },
   {
     path: 'achievement',

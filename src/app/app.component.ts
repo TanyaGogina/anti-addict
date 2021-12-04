@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
         ['/poll']: 'Poll',
         ['/reminder']: 'Reminder',
         ['/statistic']: 'Statistics',
-        ['/config']: 'Addiction configuration'
+        ['/config']: 'Addiction configuration',
+        ['/edit']: 'Addiction editing'
     }
 
     constructor(private readonly storeService: StoreService, private readonly router: Router, private readonly userService: UserService, public platform: Platform, private menu: MenuController, public readonly addictionsService: AddictionsService) {
