@@ -1,3 +1,57 @@
-<p>
-  finance works!
-</p>
+<div class="d-flex h-100 wrapper">
+    <ion-card class="saved-money w-100">
+        <ion-card-header>
+            <ion-card-title>Saved money</ion-card-title>
+            <ion-card-subtitle>Wealth is the ability to fully experience life.</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>Saved money for this
+                    week: {{savedForThisWeekMoney }} {{currencyOfUser}}</ion-label>
+            </div>
+
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>Saved money for this month: {{savedForThisMonthMoney}} {{currencyOfUser}}</ion-label>
+            </div>
+
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>Saved money for the whole route: {{alreadySavedMoney}} {{currencyOfUser}}</ion-label>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="prognosesEnabled" class="prognostications">
+        <ion-card-header>
+            <ion-card-title>Finance prognostications</ion-card-title>
+            <ion-card-subtitle>“Money looks better in the bank account than on your feet.</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>In 1 month you'll save: {{moneyInMonth }} {{currencyOfUser}}</ion-label>
+            </div>
+
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>In 1 year you'll save: {{moneyInYear }} {{currencyOfUser}}</ion-label>
+            </div>
+
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>In 10 year you'll save: {{moneyIn10Years }} {{currencyOfUser}}</ion-label>
+            </div>
+
+            <div class="d-flex align-center car-part">
+                <ion-icon slot="start" name="wallet" class="mr-10"></ion-icon>
+                <ion-label>Years to buy a car: {{dayToCar }} </ion-label>
+            </div>
+
+            <img src="assets/8812213.png">
+        </ion-card-content>
+    </ion-card>
+</div>

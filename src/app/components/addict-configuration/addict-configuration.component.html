@@ -132,8 +132,12 @@
 
                     <ng-container *ngIf="appConfigFormGroup.get('finance').get('isEnabled').value">
                         <ion-item formGroupName="finance">
-                            <ion-label position="floating">Your currency (UAH, USD, EUR, etc)</ion-label>
-                            <ion-input formControlName="currency"></ion-input>
+                            <ion-label position="floating">Your currency (UAH, USD, EUR)</ion-label>
+                            <ion-select okText="Submit" cancelText="Cancel" formControlName="currency">
+                                <ion-select-option value="UAH">UAH</ion-select-option>
+                                <ion-select-option value="USD">USD</ion-select-option>
+                                <ion-select-option value="EUR">EUR</ion-select-option>
+                            </ion-select>
                         </ion-item>
 
                         <ion-item formGroupName="finance">
