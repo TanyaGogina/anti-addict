@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuController} from "@ionic/angular";
+import {UserService} from "../../services/user.service";
+import {AddictionsService} from "../../services/addictions.service";
 
 @Component({
   selector: 'app-landing',
@@ -8,7 +10,7 @@ import {MenuController} from "@ionic/angular";
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private menu: MenuController,) { }
+  constructor(private menu: MenuController, public userService: UserService, public readonly addictionsService: AddictionsService) { }
 
   ngOnInit() {}
 

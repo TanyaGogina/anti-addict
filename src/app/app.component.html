@@ -7,6 +7,19 @@
 
                     <ion-note>Hi {{(user$ | async)?.name}}, this is your road to recover</ion-note>
 
+                    <ion-list *ngIf="addictionsService.addictions.length">
+                        <ion-item>
+                            <ion-label position="floating">Selected addiction</ion-label>
+                            <ion-select okText="Submit" cancelText="Cancel" [(ngModel)]="selectedIndex"
+                                        (change)="onAddChange()">
+                                <ion-select-option *ngFor="let add of addictionsService.addictions; let i = index"
+                                                   [value]="i">
+                                    {{add.name}}
+                                </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-list>
+
                     <ng-container *ngIf="addictionsService.addictions.length">
                         <ng-container *ngFor="let p of appPages; let i = index">
                             <ion-menu-toggle auto-hide="false" *ngIf="p.isEnabled">
@@ -28,10 +41,13 @@
                 <ion-list id="labels-list">
                     <ion-list-header>User actions</ion-list-header>
 
-                    <ion-item lines="none" (click)="addAddiction()">
-                        <ion-icon slot="start" name="add-circle"></ion-icon>
-                        <ion-label>Add addiction</ion-label>
-                    </ion-item>
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerDirection="root" [routerLink]="['config']" lines="none" detail="false"
+                                  routerLinkActive="selected">
+                            <ion-icon slot="start" name="add-circle"></ion-icon>
+                            <ion-label>Add addiction</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
 
                     <ion-item lines="none" (click)="logOut()">
                         <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>

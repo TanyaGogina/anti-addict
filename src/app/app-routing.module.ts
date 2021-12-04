@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {LandingComponent} from "./components/landing/landing.component";
+import {AddictConfigurationComponent} from "./components/addict-configuration/addict-configuration.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'landing',
     component: LandingComponent
+  },
+  {
+    path: 'config',
+    component: AddictConfigurationComponent
   },
   {
     path: 'achievement',

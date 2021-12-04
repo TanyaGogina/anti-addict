@@ -1,5 +1,7 @@
 {
   "name": "addict-break",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

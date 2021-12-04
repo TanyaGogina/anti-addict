@@ -1,15 +1,18 @@
 <div class="d-flex align-center justify-center h-100 flex-column">
-  <div class="card-wrapper d-flex align-center justify-center">
-    <ion-card>
-      <ion-card-content>
-        <ion-text color="primary">
-          <p>Open sidebar and start your road by selecting or adding an addiction!</p>
-        </ion-text>
+    <div class="card-wrapper d-flex align-center justify-center">
+        <ion-card>
+            <ion-card-content>
+                <ion-text color="primary">
+                    <p>Hi {{(userService.user$ | async)?.name}}! Open sidebar
+                        and {{addictionsService.addictions.length ? 'continue' : 'start'}} your road to recovery
+                        by {{addictionsService.addictions.length ? 'selecting' : 'adding'}} an addiction and using
+                        preferred functionality with <strong>AddictBreak</strong>!</p>
+                </ion-text>
 
-        <img src="../../../assets/8219579_workflow_help_support_teamwork_ladder_icon.png">
-      </ion-card-content>
-    </ion-card>
-  </div>
+                <img src="../../../assets/8219579_workflow_help_support_teamwork_ladder_icon.png">
+            </ion-card-content>
+        </ion-card>
+    </div>
 
-  <ion-button color="primary" (click)="openSidebar()" >Open sidebar</ion-button>
+    <ion-button color="primary" (click)="openSidebar()">Open sidebar</ion-button>
 </div>

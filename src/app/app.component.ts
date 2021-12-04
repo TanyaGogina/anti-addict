@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StoreService} from './services';
 import {NavigationEnd, Router} from "@angular/router";
 import {UserService} from "./services/user.service";
-import {filter} from "rxjs/operators";
+import {filter, take} from "rxjs/operators";
 import {MenuController, Platform} from "@ionic/angular";
 import {AddictionsService} from "./services/addictions.service";
 
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
         {title: 'Content', url: '/content', icon: 'film', isEnabled: true},
     ];
     pageName: string = 'qwe';
+    selectedIndex = 0;
 
     private pageNames: Record<string, string> = {
         ['/landing']: 'AddictBreak',
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
         ['/poll']: 'Poll',
         ['/reminder']: 'Reminder',
         ['/statistic']: 'Statistics',
+        ['/config']: 'Addiction configuration'
     }
 
     constructor(private readonly storeService: StoreService, private readonly router: Router, private readonly userService: UserService, public platform: Platform, private menu: MenuController, public readonly addictionsService: AddictionsService) {
@@ -47,17 +49,27 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.storeService.getAppRules().subscribe(res => {
-            this.manageLink('Reminder', res[0].reminder.isEnabled);
-            this.manageLink('Poll', res[0].poll.isEnabled);
-            this.manageLink('Finance', res[0].finance.isEnabled);
-            this.manageLink('Statistic', res[0].statistics.isEnabled);
-            this.manageLink('Achievement', res[0].achievements.isEnabled);
-            this.manageLink('Failure', res[0].failure.isEnabled);
-            this.manageLink('Content', res[0].content.isEnabled);
+        this.userService.user$.pipe(filter(user => !!user)).subscribe(user => {
+            this.storeService.getAddictions(user.username).pipe(take(1)).subscribe(res => {
+                const addictions = res[res.length - 1]?.add;
+                this.addictionsService.addictions = addictions || [];
+
+                if (addictions.length) this.addictionsService.selectAddIndex$.next(0);
+            })
         });
 
         this.user$ = this.userService.user$;
+        this.addictionsService.selectAddIndex$.subscribe(index => {
+            const addiction = this.addictionsService.addictions[index];
+
+            this.manageLink('Reminder', addiction.appRules.reminder.isEnabled);
+            this.manageLink('Poll', addiction.appRules.poll.isEnabled);
+            this.manageLink('Finance', addiction.appRules.finance.isEnabled);
+            this.manageLink('Statistic', addiction.appRules.statistics.isEnabled);
+            this.manageLink('Achievement', addiction.appRules.achievements.isEnabled);
+            this.manageLink('Failure', addiction.appRules.failure.isEnabled);
+            this.manageLink('Content', addiction.appRules.content.isEnabled);
+        })
     }
 
     toggleSidebar(): void {
@@ -69,8 +81,8 @@ export class AppComponent implements OnInit {
         this.router.navigate(['auth'], {replaceUrl: true});
     }
 
-    addAddiction(): void {
-
+    onAddChange(): void {
+        this.addictionsService.selectAddIndex$.next(this.selectedIndex);
     }
 
     private manageLink(moduleTitle: string, isEnabled: boolean): void {

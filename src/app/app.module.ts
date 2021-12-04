@@ -18,21 +18,22 @@ import {environment} from '../environments/environment';
 
 import {LandingComponent} from "./components/landing/landing.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AddictConfigurationComponent} from "./components/addict-configuration/addict-configuration.component";
 
 @NgModule({
-  declarations: [AppComponent, LandingComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    AngularFireStorageModule,ReactiveFormsModule, FormsModule
-  ],
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, LandingComponent, AddictConfigurationComponent],
+    entryComponents: [],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        AngularFireStorageModule, ReactiveFormsModule, FormsModule,
+    ],
+    providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }
