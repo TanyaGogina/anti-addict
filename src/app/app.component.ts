@@ -54,13 +54,14 @@ export class AppComponent implements OnInit {
                 const addictions = res[res.length - 1]?.add;
                 this.addictionsService.addictions = addictions || [];
 
-                if (addictions.length) this.addictionsService.selectAddIndex$.next(0);
+                if (addictions?.length) this.addictionsService.selectAddIndex$.next(0);
             })
         });
 
         this.user$ = this.userService.user$;
         this.addictionsService.selectAddIndex$.subscribe(index => {
             const addiction = this.addictionsService.addictions[index];
+            this.selectedIndex = index;
 
             this.manageLink('Reminder', addiction.appRules.reminder.isEnabled);
             this.manageLink('Poll', addiction.appRules.poll.isEnabled);

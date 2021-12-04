@@ -11,7 +11,7 @@
                         <ion-item>
                             <ion-label position="floating">Selected addiction</ion-label>
                             <ion-select okText="Submit" cancelText="Cancel" [(ngModel)]="selectedIndex"
-                                        (change)="onAddChange()">
+                                        (ionChange)="onAddChange()">
                                 <ion-select-option *ngFor="let add of addictionsService.addictions; let i = index"
                                                    [value]="i">
                                     {{add.name}}
