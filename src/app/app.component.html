@@ -7,19 +7,31 @@
 
                     <ion-note>Hi {{(user$ | async)?.name}}, this is your road to recover</ion-note>
 
-                    <ng-container *ngFor="let p of appPages; let i = index">
-                        <ion-menu-toggle auto-hide="false" *ngIf="p.isEnabled">
-                            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-                                      routerLinkActive="selected">
-                                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                                <ion-label>{{ p.title }}</ion-label>
-                            </ion-item>
-                        </ion-menu-toggle>
+                    <ng-container *ngIf="addictionsService.addictions.length">
+                        <ng-container *ngFor="let p of appPages; let i = index">
+                            <ion-menu-toggle auto-hide="false" *ngIf="p.isEnabled">
+                                <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                                          routerLinkActive="selected">
+                                    <ion-icon slot="start" [ios]="p.icon + '-outline'"
+                                              [md]="p.icon + '-sharp'"></ion-icon>
+                                    <ion-label>{{ p.title }}</ion-label>
+                                </ion-item>
+                            </ion-menu-toggle>
+                        </ng-container>
                     </ng-container>
+
+                    <ion-note *ngIf="!addictionsService.addictions.length" class="add-note">
+                        Please add an addiction
+                    </ion-note>
                 </ion-list>
 
                 <ion-list id="labels-list">
                     <ion-list-header>User actions</ion-list-header>
+
+                    <ion-item lines="none" (click)="addAddiction()">
+                        <ion-icon slot="start" name="add-circle"></ion-icon>
+                        <ion-label>Add addiction</ion-label>
+                    </ion-item>
 
                     <ion-item lines="none" (click)="logOut()">
                         <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>

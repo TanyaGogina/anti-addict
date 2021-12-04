@@ -1,0 +1,27 @@
+ion-text {
+  padding: 20px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+
+ion-card {
+  max-width: 90vw;
+}
+
+img {
+  filter: hue-rotate(27deg) brightness(0.9) contrast(1.4);
+
+}
+
+.card-wrapper {
+  flex: 1;
+}
+
+ion-button {
+  width: 90vw;
+  margin-bottom: 5vw;
+}

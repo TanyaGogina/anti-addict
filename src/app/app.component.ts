@@ -4,6 +4,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {UserService} from "./services/user.service";
 import {filter} from "rxjs/operators";
 import {MenuController, Platform} from "@ionic/angular";
+import {AddictionsService} from "./services/addictions.service";
 
 @Component({
     selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     pageName: string = 'qwe';
 
     private pageNames: Record<string, string> = {
-        ['/landing']: 'Landing page',
+        ['/landing']: 'AddictBreak',
         ['/auth']: '',
         ['/achievement']: 'Achievements',
         ['/content']: 'Content',
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
         ['/statistic']: 'Statistics',
     }
 
-    constructor(private readonly storeService: StoreService, private readonly router: Router, private readonly userService: UserService, public platform: Platform, private menu: MenuController) {
+    constructor(private readonly storeService: StoreService, private readonly router: Router, private readonly userService: UserService, public platform: Platform, private menu: MenuController, public readonly addictionsService: AddictionsService) {
         this.pageName = this.pageNames[this.router.url];
 
         this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
@@ -63,13 +64,19 @@ export class AppComponent implements OnInit {
         this.menu.toggle();
     }
 
+    logOut(): void {
+        this.userService.user$.next(null)
+        this.router.navigate(['auth'], {replaceUrl: true});
+    }
+
+    addAddiction(): void {
+
+    }
+
     private manageLink(moduleTitle: string, isEnabled: boolean): void {
         const linkConfigs = this.appPages.find(page => page.title === moduleTitle);
         linkConfigs.isEnabled = isEnabled;
     }
 
-    private logOut(): void {
-        this.userService.user$.next(null)
-        this.router.navigate(['auth'], {replaceUrl: true});
-    }
+
 }
