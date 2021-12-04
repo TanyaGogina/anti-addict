@@ -1,0 +1,35 @@
+.auth-card-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-card {
+  width: 350px;
+}
+
+.redirect-wrapper {
+  display: flex;
+  margin: 50px 0 30px;
+  align-items: center;
+  justify-content: center;
+
+  .redirect {
+    text-decoration: underline;
+    padding-left: 5px;
+  }
+}
+
+.button-wrapper {
+  margin-bottom: 10px;
+
+  ion-button {
+    width: 140px;
+  }
+}
+
+ion-card-header {
+  margin-bottom: 30px;
+}

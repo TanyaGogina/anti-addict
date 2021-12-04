@@ -1,34 +1,42 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>AddictBreak</ion-list-header>
+    <ion-split-pane contentId="main-content">
+        <ion-menu contentId="main-content" type="overlay" [disabled]="isAuthPage">
+            <ion-content>
+                <ion-list id="inbox-list">
+                    <ion-list-header>AddictBreak</ion-list-header>
 
-          <ion-note>your road to recover</ion-note>
+                    <ion-note>Hi {{(user$ | async)?.name}}, this is your road to recover</ion-note>
 
-          <ng-container *ngFor="let p of appPages; let i = index">
-            <ion-menu-toggle auto-hide="false" *ngIf="p.isEnabled">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-                        routerLinkActive="selected">
-                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          </ng-container>
-        </ion-list>
+                    <ng-container *ngFor="let p of appPages; let i = index">
+                        <ion-menu-toggle auto-hide="false" *ngIf="p.isEnabled">
+                            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                                      routerLinkActive="selected">
+                                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                                <ion-label>{{ p.title }}</ion-label>
+                            </ion-item>
+                        </ion-menu-toggle>
+                    </ng-container>
+                </ion-list>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+                <ion-list id="labels-list">
+                    <ion-list-header>User actions</ion-list-header>
 
-          <ion-item lines="none">
-            <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
-            <ion-label>Log out</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+                    <ion-item lines="none" (click)="logOut()">
+                        <ion-icon slot="start" ios="log-out-outline" md="log-out-sharp"></ion-icon>
+                        <ion-label>Log out</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
 
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+        <ion-header *ngIf="!isAuthPage">
+            <ion-item>
+                <ion-icon name="reorder-three" (click)="toggleSidebar()"></ion-icon>
+                <ion-label class="page-name">{{pageName}}</ion-label>
+            </ion-item>
+        </ion-header>
+
+
+        <ion-router-outlet id="main-content" [ngClass]="{'ignore-margin': isAuthPage}"></ion-router-outlet>
+    </ion-split-pane>
 </ion-app>

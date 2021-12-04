@@ -1,12 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ContentComponent} from "./content/content.component";
+import {RouterModule, Routes} from "@angular/router";
 
+const routes: Routes = [
+    {
+        path: '',
+        component: ContentComponent
+    }
+];
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+    declarations: [ContentComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes)
+    ]
 })
-export class ContentModule { }
+export class ContentModule {
+}

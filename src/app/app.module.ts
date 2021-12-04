@@ -16,8 +16,11 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 // Environment
 import {environment} from '../environments/environment';
 
+import {LandingComponent} from "./components/landing/landing.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LandingComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import {environment} from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,ReactiveFormsModule, FormsModule
   ],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],

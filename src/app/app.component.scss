@@ -35,11 +35,8 @@ ion-menu.md ion-list#inbox-list ion-list-header {
 
 ion-menu.md ion-list#labels-list ion-list-header {
   font-size: 16px;
-
   margin-bottom: 18px;
-
   color: #757575;
-
   min-height: 26px;
 }
 
@@ -116,4 +113,16 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+ion-router-outlet {
+  margin-top: 48px;
+
+  &.ignore-margin {
+    margin-top: 0;
+  }
+}
+
+.page-name {
+  margin-left: 10px;
 }

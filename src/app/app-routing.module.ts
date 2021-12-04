@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {LandingComponent} from "./components/landing/landing.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'content',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
     path: '_folder/:id',
     loadChildren: () => import('./_folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
   },
   {
     path: 'achievement',
@@ -38,6 +43,10 @@ const routes: Routes = [
   {
     path: 'statistic',
     loadChildren: () => import('./modules/statistic/statistic.module').then(m => m.StatisticModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   }
 ];
 
