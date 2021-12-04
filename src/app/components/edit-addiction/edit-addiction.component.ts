@@ -88,7 +88,7 @@ export class EditAddictionComponent implements OnInit {
 
         this.appConfigFormGroup.get('statistics').get('isEnabled').valueChanges.subscribe(value => {
             if (!value) {
-                this.appConfigFormGroup.get('mode').get('frequency').setValue(0);
+                this.appConfigFormGroup.get('statistics').get('mode').setValue(0);
             }
         });
 

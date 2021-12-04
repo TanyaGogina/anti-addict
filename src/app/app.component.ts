@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.userService.user$.pipe(filter(user => !!user)).subscribe(user => {
             this.storeService.getAddictions(user.username).pipe(take(1)).subscribe(res => {
-                const addictions = res[res.length - 1]?.add;
+                const addictions = res[0]?.app;
                 this.addictionsService.addictions = addictions || [];
 
                 if (addictions?.length) this.addictionsService.selectAddIndex$.next(0);

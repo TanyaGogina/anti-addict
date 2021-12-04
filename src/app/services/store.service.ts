@@ -20,6 +20,6 @@ export class StoreService {
   }
 
   saveAddictions(addictions: any[], username): Promise<any> {
-    return this.firestore.collection(username).add({add: addictions});
+    return this.firestore.collection(username).doc('app').set({app: addictions});
   }
 }
