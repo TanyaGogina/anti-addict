@@ -1,12 +1,10 @@
-import { DatePipe, formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import * as moment from 'moment';
-import { take } from 'rxjs/operators';
-import { StoreService } from 'src/app/services';
-import { AddictionsService } from 'src/app/services/addictions.service';
-import { UserService } from 'src/app/services/user.service';
+import {take} from 'rxjs/operators';
+import {StoreService} from 'src/app/services';
+import {AddictionsService} from 'src/app/services/addictions.service';
+import {UserService} from 'src/app/services/user.service';
 
 interface Addictions {
   appRules: AppRules;
@@ -30,7 +28,6 @@ export class FailureComponent implements OnInit {
   addictions: Addictions;
   moduleData: any[];
   limit: number;
-  failuresOutOfLimit: Failure[];
   private currentDate = moment();
   private index: number;
 
@@ -62,15 +59,14 @@ export class FailureComponent implements OnInit {
 
   private calculateFailureOutOfLimit(moduleData: any[]): any {
     const limit = this.addictions.limit;
-    var weekStart = this.currentDate.clone().startOf('isoWeek');
-    var weekEnd = this.currentDate.clone().endOf('isoWeek');
+    const weekStart = this.currentDate.clone().startOf('isoWeek');
 
     let timesThisWeek = 0;
 
     moduleData?.forEach(failure => {
       const failureData = moment(failure.date instanceof Date ? new Date(failure.date) : failure.date.toDate());
-      var duration = moment.duration(failureData.diff(weekStart));
-      var days = duration.asDays();
+      const duration = moment.duration(failureData.diff(weekStart));
+      const days = duration.asDays();
 
       if (days >= 0) {
         timesThisWeek++;
