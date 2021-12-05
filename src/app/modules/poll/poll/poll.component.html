@@ -1,3 +1,53 @@
-<p>
-  poll works!
-</p>
+<div class=" wrapper">
+    <ion-card *ngIf="isInitMode">
+        <ion-card-header>
+            <ion-card-title>Welcome to poll module</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="d-flex align-center">
+                <ion-icon slot="start" name="checkmark-circle" class="mr-10 init-icon"></ion-icon>
+                <ion-label>
+                    Click "start poll" button to start your poll of one of your subjects: {{subjectsText}}.
+                </ion-label>
+            </div>
+
+            <img src="assets/8219644_support_question_faq_list_frequently_icon.png">
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!isInitMode">
+        <ion-card-header>
+            <ion-card-title>{{ selectedSubject === 'fighting' ? 'Common addiction fighting' : 'Your progress' }} poll</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item *ngFor="let question of currentPoll; let i = index">
+                <ion-list>
+                    <div [ngClass]="{'with-margin': i!==0}">
+                        <ion-note>{{question.questions}}</ion-note>
+                    </div>
+
+                    <ion-radio-group [(ngModel)]="question.answer">
+                        <ion-item>
+                            <ion-label>Yes</ion-label>
+                            <ion-radio slot="start" [value]="true"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>No</ion-label>
+                            <ion-radio slot="start" [value]="false"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</div>
+
+<div class="d-flex">
+    <ion-button color="primary" class="big" (click)="startPoll()" *ngIf="isInitMode">Start poll</ion-button>
+    <ion-button color="success" class="big" (click)="competePoll()" *ngIf="!isInitMode" [disabled]="!isSaveEnabled()">
+        Compete poll
+    </ion-button>
+</div>

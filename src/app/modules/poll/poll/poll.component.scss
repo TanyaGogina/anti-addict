@@ -1,0 +1,35 @@
+.wrapper {
+  flex: 1;
+  max-height: calc(100% - 15vw - 40px);
+  overflow: auto;
+  margin: 5vw 5vw 3vw;
+}
+
+ion-card {
+  width: 90vw;
+  margin: 0;
+}
+
+ion-button {
+  width: 45vw;
+  margin: 0 5vw 5vw;
+
+
+  &.big {
+    width: 90vw;
+  }
+}
+
+.init-icon {
+  width: 70px;
+  margin-right: 10px;
+  height: 40px;
+}
+
+img {
+  margin-top: 50px;
+}
+
+.with-margin {
+  margin-top: 2vw;
+}
