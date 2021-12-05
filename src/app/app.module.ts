@@ -31,7 +31,7 @@ import {EditAddictionComponent} from "./components/edit-addiction/edit-addiction
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireStorageModule, ReactiveFormsModule, FormsModule,
+        AngularFireStorageModule, ReactiveFormsModule, FormsModule
     ],
     providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
     bootstrap: [AppComponent],

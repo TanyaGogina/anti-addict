@@ -1,20 +1,26 @@
-<div class="failures-wrapper">
-    <div *ngIf="!moduleData?.length" class="failures-message">
-        <span>I didn't failed even once, great job</span> <br />
-        <span>Keep doing it 😊</span>
-    </div>
-    <div class="failures-list">
-        <ion-list *ngFor="let item of moduleData">
-            <ion-item>
-                <ion-icon class="failure-icon" *ngIf="item.type == 1" name="nuclear"></ion-icon>
-                <ion-icon class="failure-icon" *ngIf="item.type == 0" name="warning"></ion-icon>
-                <ion-note>{{item.type ? 'Failure out of limit' : 'Ooops, small failure'}} on {{item.date}}</ion-note>
-            </ion-item>
-        </ion-list>
-    </div>
+<div class="wrapper">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>My failures</ion-card-title>
+        </ion-card-header>
 
-    <div class="failed-button-wrapper">
-        <ion-button class="failed-button" color="danger" expand="block" (click)="addFailures()">I'm failed
-        </ion-button>
-    </div>
+        <ion-card-content>
+            <ion-note *ngIf="!moduleData?.length">No failures, good job. Keep doing it 😊</ion-note>
+
+            <div class="d-flex flex-column" *ngIf="moduleData?.length">
+                <div *ngFor="let item of moduleData" class="failure d-flex align-center">
+                    <ion-icon class="failure-icon" color="danger" *ngIf="item.type == 1" name="nuclear"></ion-icon>
+                    <ion-icon class="failure-icon" color="warning" *ngIf="item.type == 0" name="warning"></ion-icon>
+                    <ion-note>{{item.type ? 'Failure out of limit' : 'Ooops, small failure'}}
+                        on {{item.date}}</ion-note>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</div>
+
+<div class="d-flex">
+    <ion-button color="danger" class="big" (click)="addFailures()">
+        I have failed
+    </ion-button>
 </div>

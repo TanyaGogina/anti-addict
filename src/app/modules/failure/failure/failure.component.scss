@@ -26,3 +26,36 @@
         }
     }
 }
+
+.wrapper {
+    flex: 1;
+    max-height: calc(100% - 15vw - 40px);
+    overflow: auto;
+    margin: 5vw 5vw 3vw;
+}
+
+ion-card {
+    width: 90vw;
+    margin: 0;
+}
+
+ion-button {
+    width: 45vw;
+    margin: 0 5vw 5vw;
+
+
+    &.big {
+        width: 90vw;
+    }
+}
+
+.failure {
+    padding: 15px 0;
+    border-bottom: 1px solid;
+}
+
+ion-icon {
+    width: 25px;
+    height: 30px;
+    margin-right: 10px;
+}

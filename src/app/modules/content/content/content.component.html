@@ -1,3 +1,33 @@
-<p>
-  content works!
-</p>
+<div class=" wrapper">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title> {{addictionName}} addiction content</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-card-subtitle>Articles and media text content</ion-card-subtitle>
+
+            <div *ngFor="let link of textLinks" class="mb-10">
+                <ng-container *ngIf="!link.restriction || !restriction">
+                    <a [href]="link?.link" target="_blank" >{{link?.title}}</a>
+                    <span *ngIf="link.restriction" class="warning"> (sensitive content)</span>
+                </ng-container>
+            </div>
+
+            <ion-note *ngIf="!textLinks.length">Sorry, no text content for you. Our admin is working on this 😉
+            </ion-note>
+
+            <ion-card-subtitle class="mt-20">Video content</ion-card-subtitle>
+
+            <div *ngFor="let link of videoLinks" class="mb-10">
+                <ng-container *ngIf="!link.restriction || !restriction">
+                    <a [href]="link?.link" target="_blank" >{{link?.title}}</a>
+                    <span *ngIf="link.restriction" class="warning"> (sensitive content)</span>
+                </ng-container>
+            </div>
+
+            <ion-note *ngIf="!videoLinks.length">Sorry, no video content for you. Our admin is working on this 😉
+            </ion-note>
+        </ion-card-content>
+    </ion-card>
+</div>
