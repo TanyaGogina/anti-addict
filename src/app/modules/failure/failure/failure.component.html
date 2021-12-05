@@ -1,3 +1,20 @@
-<p>
-  failure works!
-</p>
+<div class="failures-wrapper">
+    <div *ngIf="!moduleData?.length" class="failures-message">
+        <span>I didn't failed even once, great job</span> <br />
+        <span>Keep doing it 😊</span>
+    </div>
+    <div class="failures-list">
+        <ion-list *ngFor="let item of moduleData">
+            <ion-item>
+                <ion-icon class="failure-icon" *ngIf="item.type == 1" name="nuclear"></ion-icon>
+                <ion-icon class="failure-icon" *ngIf="item.type == 0" name="warning"></ion-icon>
+                <ion-note>{{item.type ? 'Failure out of limit' : 'Ooops, small failure'}} on {{item.date}}</ion-note>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="failed-button-wrapper">
+        <ion-button class="failed-button" color="danger" expand="block" (click)="addFailures()">I'm failed
+        </ion-button>
+    </div>
+</div>

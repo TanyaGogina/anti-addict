@@ -1,0 +1,28 @@
+.failures-wrapper{
+    position: relative;
+
+    .failure-icon {
+        margin-right: 10px;
+    }
+
+    .failures-message {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .failures-list {
+        height: 660px;
+        overflow-y: scroll;
+    }
+
+    .failed-button-wrapper{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;        
+        
+        .failed-button {
+            font-size: 18px;
+            width: 330px;
+        }
+    }
+}
