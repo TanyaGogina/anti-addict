@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AddictionsService} from "../../../services/addictions.service";
 import {UserService} from "../../../services/user.service";
 import {StoreService} from "../../../services";
+import * as moment from "moment";
 
 @Component({
     selector: 'app-poll',
@@ -88,7 +89,10 @@ export class PollComponent implements OnInit {
         const addictionToUpdate = this.addService.addictions[this.addictionIndex];
         addictionToUpdate.appRules.poll.moduleData = [...addictionToUpdate.appRules.poll.moduleData, new Date().toDateString()];
 
-        // if progress poll check failure. if failure yes - save failure ++
+        if (this.selectedSubject === 'progress' && this.currentPoll[this.currentPoll.length - 1].answer) {
+            const newFailure = this.calculateFailureOutOfLimit();
+            addictionToUpdate.appRules.failure.moduleData = [...addictionToUpdate.appRules.failure.moduleData, newFailure];
+        }
 
         this.addService.selectAddIndex$.next(this.addictionIndex);
         this.storeService.saveAddictions(this.addService.addictions, this.username).then();
@@ -123,5 +127,28 @@ export class PollComponent implements OnInit {
                 this.selectedSubject = 'progress';
             }
         }
+    }
+
+    private calculateFailureOutOfLimit(): any {
+        const limit = this.addService.addictions[this.addictionIndex].limit;
+        const weekStart = moment().clone().startOf('isoWeek');
+        const moduleData = this.addService.addictions[this.addictionIndex].appRules.failure.moduleData;
+        let timesThisWeek = 0;
+
+        moduleData?.forEach(failure => {
+            const failureData = moment(failure.date instanceof Date ? new Date(failure.date) : failure.date.toDate());
+            const duration = moment.duration(failureData.diff(weekStart));
+            const days = duration.asDays();
+
+            if (days >= 0) {
+                timesThisWeek++;
+            }
+        });
+
+        if (timesThisWeek >= limit) {
+            return { date: new Date(), type: 1 };
+        }
+
+        return { date: new Date(), type: 0 };
     }
 }
