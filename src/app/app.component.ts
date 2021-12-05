@@ -15,13 +15,13 @@ export class AppComponent implements OnInit {
     user$;
     isAuthPage: boolean = true;
     appPages = [
-        {title: 'Reminder', url: '/reminder', icon: 'alarm', isEnabled: true},
         {title: 'Poll', url: '/poll', icon: 'checkbox', isEnabled: true},
         {title: 'Finance', url: '/finance', icon: 'cash', isEnabled: true},
         {title: 'Statistic', url: '/statistic', icon: 'podium', isEnabled: true},
         {title: 'Achievement', url: '/achievement', icon: 'trophy', isEnabled: true},
         {title: 'Failure', url: '/failure', icon: 'warning', isEnabled: true},
         {title: 'Content', url: '/content', icon: 'film', isEnabled: true},
+        {title: 'Reminder', url: '/reminder', icon: 'alarm', isEnabled: true},
     ];
     pageName: string = 'qwe';
     selectedIndex = 0;
@@ -64,13 +64,13 @@ export class AppComponent implements OnInit {
             const addiction = this.addictionsService.addictions[index];
             this.selectedIndex = index;
 
-            this.manageLink('Reminder', addiction.appRules.reminder.isEnabled);
             this.manageLink('Poll', addiction.appRules.poll.isEnabled);
             this.manageLink('Finance', addiction.appRules.finance.isEnabled);
             this.manageLink('Statistic', addiction.appRules.statistics.isEnabled);
             this.manageLink('Achievement', addiction.appRules.achievements.isEnabled);
             this.manageLink('Failure', addiction.appRules.failure.isEnabled);
             this.manageLink('Content', addiction.appRules.content.isEnabled);
+            this.manageLink('Reminder', addiction.appRules.reminder.isEnabled);
         })
     }
 
