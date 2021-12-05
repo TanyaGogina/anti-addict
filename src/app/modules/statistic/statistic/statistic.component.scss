@@ -1,5 +1,37 @@
 .chart-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    width: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 400px;
+}
+
+ion-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px 0 0;
+}
+
+.wrapper {
+  padding: 15px 0;
+  border-bottom: 1px solid;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+ion-card {
+  margin: 5vw;
+}
+
+.charts {
+  margin-top: 0;
+}
+
+.box {
+  height: 30px;
+  width: 39px;
+  background: #1e1e1e;
+  position: relative;
+  left: 287px;
+  top: -279px;
 }

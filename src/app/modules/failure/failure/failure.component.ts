@@ -67,7 +67,7 @@ export class FailureComponent implements OnInit {
             }
         });
 
-        if (timesThisWeek > limit) {
+        if (timesThisWeek >= limit) {
             return {date: new Date(), type: 1};
         }
 

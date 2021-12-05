@@ -1,35 +1,40 @@
-  <ion-card *ngIf="mode == 1 || mode == 0">
-    <ion-card-header>
-      <ion-card-title>Statistics</ion-card-title>
-      <ion-card-subtitle>Look at your progress</ion-card-subtitle>
-    </ion-card-header>
+<div class="d-flex flex-column">
+    <ion-card *ngIf="mode == 1 || mode == 0">
+        <ion-card-header>
+            <ion-card-title>Your numeric statistics</ion-card-title>
+            <ion-card-subtitle>Check your progress</ion-card-subtitle>
+        </ion-card-header>
 
-    <ion-card-content>
-      <div class="d-flex align-center">
-        <ion-icon name="checkbox"></ion-icon>
-        <ion-label>Polls you've compelted: {{pollsPassed}}</ion-label>
-      </div>
+        <ion-card-content>
+            <div class="d-flex align-center wrapper">
+                <ion-icon name="checkbox"></ion-icon>
+                <ion-label>Polls you've completed: {{pollsPassed}}</ion-label>
+            </div>
 
-      <div class="d-flex align-center">
-        <ion-icon name="warning"></ion-icon>
-        <ion-label>Times you've failed: {{failuresCount}}</ion-label>
-      </div>
+            <div class="d-flex align-center wrapper">
+                <ion-icon name="warning"></ion-icon>
+                <ion-label>Times you've failed: {{failuresCount}}</ion-label>
+            </div>
 
-      <div class="d-flex align-center">
-        <ion-icon name="time"></ion-icon>
-        <ion-label>Days on the way to recovery: {{timeUsingApp}}</ion-label>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-content *ngIf="mode == 2 || mode == 0">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>Failures chart</ion-card-subtitle>
-        <ion-card-title>How many times you failed</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <google-chart class="chart-wrapper" [data]="barChart"></google-chart>
-      </ion-card-content>
+            <div class="d-flex align-center wrapper">
+                <ion-icon name="calendar-number"></ion-icon>
+                <ion-label>Days on the way to recovery: {{timeUsingApp}}</ion-label>
+            </div>
+        </ion-card-content>
     </ion-card>
-  </ion-content>
+
+    <ng-container *ngIf="mode == 2 || mode == 0">
+        <ion-card class="charts">
+            <ion-card-header>
+                <ion-card-title>Failures chart</ion-card-title>
+                <ion-card-subtitle>How many times you failed </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <google-chart class="chart-wrapper" [data]="barChart" *ngIf="barChart"></google-chart>
+            </ion-card-content>
+        </ion-card>
+
+        <div class="box"></div>
+    </ng-container>
+</div>
+

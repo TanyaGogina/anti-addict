@@ -97,14 +97,18 @@ export class StatisticComponent implements OnInit {
       chartType: 'ColumnChart',
       dataTable: [
         ['', ''],
-        ['September', this.september?.length ? this.september?.length : 0],
-        ['October', this.october?.length ? this.october?.length : 0],
-        ['November', this.november?.length ? this.november?.length : 0],
-        ['December', this.decemeber?.length ? this.decemeber?.length : 0]
+        ['Sep', this.september?.length ? this.september?.length : 0],
+        ['Oct', this.october?.length ? this.october?.length : 0],
+        ['Nov', this.november?.length ? this.november?.length : 0],
+        ['Dec', this.decemeber?.length ? this.decemeber?.length : 0]
       ],
       options: {
         height: 300,
         width: 300,
+        backgroundColor: { fill:'transparent' },
+        hAxis: {
+          textStyle:{color: '#FFF'}
+        }
       }
     };
   }
