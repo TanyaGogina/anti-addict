@@ -19,7 +19,7 @@ export class AchievementComponent implements OnInit {
             const currentDate = new Date();
 
             this.achievements = [];
-            this.achievements.push({title: 'On the way to recovery 🚭 🚯 📵', date: startDate})
+            this.achievements.push({title: 'On the way to recovery 🚭🚯📵', date: startDate})
 
             const diffTime = Math.abs(startDate.getTime() - currentDate.getTime());
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
