@@ -8,18 +8,6 @@ import { StoreService } from 'src/app/services';
 import { AddictionsService } from 'src/app/services/addictions.service';
 import { UserService } from 'src/app/services/user.service';
 
-interface Addictions {
-  appRules: AppRules;
-  limit: number;
-}
-
-interface AppRules {
-  failure: Failure;
-}
-
-interface Failure {
-  moduleData: any[];
-}
 @Component({
   selector: 'app-failure',
   templateUrl: './failure.component.html',
@@ -27,10 +15,9 @@ interface Failure {
 })
 export class FailureComponent implements OnInit {
   userLogin: any;
-  addictions: Addictions;
+  addictions: any;
   moduleData: any[];
   limit: number;
-  failuresOutOfLimit: Failure[];
   private currentDate = moment();
   private index: number;
 
